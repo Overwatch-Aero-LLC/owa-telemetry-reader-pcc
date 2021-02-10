@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<UniversalController name="Speedboat" ID="6" Ver="0">
+
+	<ActuatorTypes num="3">
+		<Type name="no actuator" type="angle"/>
+		<Type name="Throttle"/>
+		<Type name="Rudder" type="angle"/>
+	</ActuatorTypes>
+	
+	
+	<Commands num="3">
+		<Loop name="Speed"    telemetry="groundspeed"   units="speed"       display="%5.1f"/>
+		<Loop name="Course"   telemetry="groundheading" units="angle"       display="%5.2f"/>
+		<Loop name="TurnRate" telemetry="yawrate"       units="angle_rate"  display="%6.3f"/>
+	</Commands>
+	
+	
+	<Modes num="2">
+		<Mode name="Prelaunch" color="orange"/>
+		<Mode name="Sailing"/>
+	</Modes>
+	
+
+	<Categories num="3">
+	
+		<Category name="Gains" num="11">
+		
+			<Group name="Speed Gains">
+				<Element name="reserved"/>
+				<Element name="Speed pro" 	type="float" units="na" display="%7.4f"/>
+				<Element name="Accel pro" 	type="float" units="na" display="%7.4f"/>
+				<Element name="Accel int" 	type="float" units="na" display="%7.4f"/>
+				<Element name="Wave drag trust" type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Steering Gains">
+				<Element name="Tracker conv"  type="float" units="na" display="%7.4f"/>
+				<Element name="Heading pro"   type="float" units="na" display="%7.4f"/>
+				<Element name="Heading deriv" type="float" units="na" display="%7.4f"/>
+				<Element name="Turn rate pro" type="float" units="na" display="%7.4f"/>
+				<Element name="Turn rate int" type="float" units="na" display="%7.4f"/>
+				<Element name="SLR power"     type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+		</Category>
+		
+		<Category name="Limits" num="8">
+			
+			<Group name="Limits">
+				<Element name="reserved"/>
+				<Element name="Max speed"      type="float" units="speed" display="%5.2f"/>
+				<Element name="Max speed time" type="float" units="[s]"   display="%5.1f"/>
+				<Element name="Turn 360 time"  type="float" units="[s]"   display="%5.1f"/>
+				<Element name="Min throttle"   type="float" units="na"    display="%5.2f"/>
+				<Element name="Max throttle"   type="float" units="na"    display="%5.2f"/>
+				<Element name="Max thr rate"   type="float" units="na"    display="%5.3f"/>
+				<Element name="Max rudder"     type="float" units="angle" display="%5.2f"/>
+			</Group>
+		
+		</Category>
+		
+		<Category name="Vehicle" num="10">
+		
+			<Group name="Geometry">
+				<Element name="reserved"/>
+				<Element name="LWL"   type="float" units="length" display="%5.2f"/>
+				<Element name="BWL"   type="float" units="length" display="%5.2f"/>
+				<Element name="Draft" type="float" units="length" display="%5.3f"/>
+			</Group>
+			
+			<Group name="Inertia">
+				<Element name="Gross mass" type="float" units="mass" display="%9.3f"/>
+				<Element name="Empty mass" type="float" units="mass" display="%9.3f"/>
+			</Group>
+			
+			<Group name="Propulsion">
+				<Element name="Static thrust"   type="float" units="[N]" display="%9.3f"/>
+				<Element name="Thruster area"   type="float" units="[sq.m]"  display="%10.6f"/>
+				<Element name="Thruster effect" type="float" units="na"    display="%5.2f"/>
+			</Group>
+			
+			<Group name="Launch">
+				<Element name="Prelaunch throttle" type="float" units="na" display="%5.2f"/>
+			</Group>
+		
+		</Category>
+
+	</Categories>
+
+</UniversalController>

@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+
+<UniversalController name="Multi-Rotor" ID="7" Ver="4">
+
+    <ActuatorTypes num="10">
+        <Type name="no actuator"/>
+        <Type name="THROTTLE1"/>
+        <Type name="THROTTLE2"/>
+        <Type name="THROTTLE3"/>
+        <Type name="THROTTLE4"/>
+        <Type name="THROTTLE5"/>
+        <Type name="THROTTLE6"/>
+        <Type name="THROTTLE7"/>
+        <Type name="THROTTLE8"/>
+        <Type name="Camera Tilt" type="angle"/>
+    </ActuatorTypes>
+
+    <Commands num="6">
+        <Loop name="Altitude" telemetry="auto_alt"      units="length" display="%8.1f"/>
+        <Loop name="GndSpd"   telemetry="groundspeed"   units="speed"  display="%5.1f"/>
+        <Loop name="Course"   telemetry="groundheading" units="heading"  display="%5.2f"/>
+        <Loop name="Roll"     telemetry="roll"          units="angle"  display="%5.2f"/>
+        <Loop name="Pitch"    telemetry="pitch"         units="angle"  display="%5.2f"/>
+        <Loop name="Heading"  telemetry="yaw"           units="heading"  display="%5.2f"/>
+    </Commands>
+    
+    <Modes num="16">
+        <Mode name="Prelaunch" color="orange"/>
+        <Mode name="Rotor spinup" color="orange"/>
+        <Mode name="Lift-off" color="orange"/>
+        <Mode name="Climbout" color="orange"/>
+        <Mode name="Flying" color="green"/>
+        <Mode name="Emergency" color="red"/>
+		<Mode name="Emergency Descent" color="red"/>
+		<Mode name="Fixed Att Descent" color="red"/>
+		<Mode name="AutoRot High" color="red"/>
+		<Mode name="AutoRot Low" color="orange"/>
+        <Mode name="Landing" color="yellow"/>
+		<Mode name="Descent-1" color="yellow"/>
+		<Mode name="Approach" color="yellow"/>
+		<Mode name="VLS" color="yellow"/>
+        <Mode name="Final Approach" color="yellow"/>
+        <Mode name="Hold" color="yellow"/>
+        <Mode name="Descent-2" color="yellow"/>
+        <Mode name="Ground check" color="yellow"/>
+        <Mode name="Rotor spindown" color="yellow"/>
+    </Modes>
+    
+    
+    <Categories num="7">
+        <Category name="Reference Model">
+            <Group name="Dynamics">
+                <Element name="reserved"/>
+                <Element name="Roll natural frequency" type="float" units="na" display="%5.3f"/>
+                <Element name="Pitch natural frequency" type="float" units="na" display="%5.3f"/>
+                <Element name="Yaw natural frequency" type="float" units="na" display="%5.3f"/>
+                <Element name="reserved"/>
+                <Element name="Horizontal natural frequency" type="float" units="na" display="%5.3f"/>
+                <Element name="Vertical natural frequency" type="float" units="na" display="%5.3f"/>
+                <Element name="Roll damping" type="float" units="na" display="%5.3f"/>
+                <Element name="Pitch damping" type="float" units="na" display="%5.3f"/>
+                <Element name="Yaw damping" type="float" units="na" display="%5.3f"/>
+                <Element name="reserved"/>
+                <Element name="Horizontal damping" type="float" units="na" display="%5.3f"/>
+                <Element name="Vertical damping" type="float" units="na" display="%5.3f"/>
+            </Group>
+            <Group name="Limits">
+                <Element name="Max horizontal vel" type="float" units="speed" display="%6.2f"/>
+                <Element name="Max Climb Rate" type="float" units="speed" display="%6.2f"/>
+                <Element name="reserved"/>															<!-- max descent rate (set by alt and vehicle limits) -->
+                <Element name="Max Tilt Rate" type="float" units="angle_rate" display="%6.2f"/>
+                <Element name="Min Yaw Rate"  type="float" units="angle_rate" display="%6.2f"/>
+                <Element name="Max Yaw Rate"  type="float" units="angle_rate" display="%6.2f"/>
+                <Element name="Max angular accel"  type="float" units="angle_rate" display="%6.2f"/>
+                <Element name="Max horizontal accel" type="float" units="acceleration" display="%6.2f"/>
+				<Element name="Max vertical accel" type="float" units="acceleration" display="%6.2f"/>
+            </Group>
+        </Category>
+		
+		
+		<Category name="PID Gains">
+            <Group name="Proportional Gains">
+                <Element name="reserved"/>
+                <Element name="Roll prop " type="float" units="na" display="%8.4f"/>
+                <Element name="Pitch prop" type="float" units="na" display="%8.4f"/>
+                <Element name="Yaw prop" type="float" units="na" display="%8.4f"/>
+                <Element name="Long prop" type="float" units="na" display="%6.3f"/>
+                <Element name="Lat prop" type="float" units="na" display="%6.3f"/>
+                <Element name="Vert prop" type="float" units="na" display="%6.3f"/>
+            </Group>
+            <Group name="Derivative Gains">
+                <Element name="Roll deriv" type="float" units="na" display="%8.4f"/>
+                <Element name="Pitch deriv" type="float" units="na" display="%8.4f"/>
+                <Element name="Yaw deriv" type="float" units="na" display="%8.4f"/>
+                <Element name="Long deriv" type="float" units="na" display="%6.3f"/>
+                <Element name="Lat deriv" type="float" units="na" display="%6.3f"/>
+                <Element name="Vert deriv" type="float" units="na" display="%6.3f"/>
+            </Group>
+            <Group name="Integral Gains">
+                <Element name="Roll int" type="float" units="na" display="%8.4f"/>
+                <Element name="Pitch int" type="float" units="na" display="%8.4f"/>
+                <Element name="Yaw int" type="float" units="na" display="%8.4f"/>
+                <Element name="Long int" type="float" units="na" display="%6.3f"/>
+                <Element name="Lateral int" type="float" units="na" display="%6.3f"/>
+                <Element name="Vertical int" type="float" units="na" display="%6.3f"/>
+            </Group>
+			<Group name="Feed Forward">
+                <Element name="Roll" type="float" units="na" display="%6.3f"/>
+				<Element name="Pitch" type="float" units="na" display="%6.3f"/>
+				<Element name="Yaw" type="float" units="na" display="%6.3f"/>
+            </Group>
+        </Category>
+        
+		
+        <Category name="Vehicle Parameters">
+            <Group name="Geometry">
+				<Element name="reserved" type="bitfield" msbit="8" numbits="1"/> 		<!--Flags bitfield --> 
+                <Element name="Rotor Diameter" type="float" units="length" display="%6.3f"/>
+				<Element name="Number of Rotors" type="float" units="na" display="%6.0f"/>
+				<Element name="reserved"/> 		
+			</Group>
+			<Group name="Propulsion">
+                <Element name="RPM at max throttle" type="float" units="na" display="%6.3f"/>
+				<Element name="reserved"/> 		<!-- "<Element name="Current at max throttle"  -->
+                <Element name="Ctmax" type="float" units="na" display="%6.3f"/>
+                <Element name="Cpmax" type="float" units="na" display="%6.3f"/>
+                <Element name="RPM time constant" type="float" units="[s]" display="%6.3f"/>
+				<Element name="reserved"/>
+            </Group>
+            <Group name="Mass Properties">
+                <Element name="Mass" type="float" units="mass" display="%8.4f"/>
+                <Element name="Roll Inertia" type="float" units="na" display="%8.4f"/>
+                <Element name="Pitch Inertia" type="float" units="na" display="%8.4f"/>
+                <Element name="Yaw Inertia" type="float" units="na" display="%8.4f"/>
+				<Element name="reserved"/>
+            </Group>    
+			<Group name="Motor">
+				<Element name="Battery capacity in Watt-hrs" type="float" units="na" display="%6.3f"/>
+				<Element name="Number of Battery Cells" type="float" units="na" display="%6.3f"/>
+			</Group>
+			<Group name="Rotor 1">
+                <Element name="Rotor 1 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 1 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 1 Spin direction" type="bitfield" msbit="0" numbits="1"/>
+			</Group>
+			<Group name="Rotor 2">
+				<Element name="Rotor 2 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 2 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 2 Spin direction" type="bitfield" msbit="1" numbits="1"/>
+			</Group>
+			<Group name="Rotor 3">
+				<Element name="Rotor 3 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 3 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 3 Spin direction" type="bitfield" msbit="2" numbits="1"/>
+			</Group>
+			<Group name="Rotor 4">
+				<Element name="Rotor 4 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 4 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 4 Spin direction" type="bitfield" msbit="3" numbits="1"/>
+			</Group>
+			<Group name="Rotor 5">
+				<Element name="Rotor 5 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 5 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 5 Spin direction" type="bitfield" msbit="4" numbits="1"/>
+			</Group>
+			<Group name="Rotor 6">
+				<Element name="Rotor 6 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 6 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 6 Spin direction" type="bitfield" msbit="5" numbits="1"/>
+			</Group>
+			<Group name="Rotor 7">
+				<Element name="Rotor 7 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 7 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 7 Spin direction" type="bitfield" msbit="6" numbits="1"/>
+			</Group>
+			<Group name="Rotor 8">
+				<Element name="Rotor 8 X-Location" type="float" units="length" display="%6.3f"/>
+                <Element name="Rotor 8 Y-Location" type="float" units="length" display="%6.3f"/>
+				<Element name="Rotor 8 Spin direction" type="bitfield" msbit="7" numbits="1"/> 
+				<Element name="reserved"/>
+			</Group>
+        </Category>
+		
+        
+        <Category name="Operating Limits">
+            <Group name="Command Point">
+                <Element name="reserved"/>
+                <Element name="Min AGL" type="float" units="length" display="%6.1f"/>
+                <Element name="Min vel" type="float" units="speed" display="%6.2f"/>
+                <Element name="Max fwd vel" type="float" units="speed" display="%6.2f"/>
+                <Element name="Max rwd and lat vel" type="float" units="speed" display="%6.2f"/>
+                <Element name="Low alt horiz vel" type="float" units="speed" display="%6.2f"/>
+                <Element name="Never exceed airspeed" type="float" units="speed" display="%6.2f"/>
+                <Element name="Max climb rate" type="float" units="speed" display="%6.2f"/>
+				<Element name="Max climb accel" type="float" units="acceleration" display="%6.2f"/>
+                <Element name="Max descent rate" type="float" units="speed" display="%6.2f"/>
+                <Element name="Low alt descent rate" type="float" units="speed" display="%6.2f"/>
+                <Element name="Max fwd accel fraction" type="float" units="na" display="%6.2f"/>
+                <Element name="Max lat accel fraction" type="float" units="na" display="%6.2f"/>
+            </Group>
+            <Group name="Attitude">
+                <Element name="Max tilt angle" type="float" units="angle" display="%6.3f"/>
+                <Element name="Low alt tilt angle" type="float" units="angle" display="%6.3f"/>
+                <Element name="Max tilt rate"  type="float" units="angle_rate" display="%6.2f"/>
+                <Element name="reserved"/> 		<!-- "Min yaw rate" -->
+                <Element name="Max yaw rate"  type="float" units="angle_rate" display="%6.2f"/>
+            </Group>
+            <Group name="Control">
+				<Element name="reserved"/> 		<!-- "Min throttle fraction" -->
+				<Element name="reserved"/> 		<!-- "Max throttle fraction" -->
+				<Element name="Max thr rate" type="float" display="%6.3f"/>
+                <Element name="Max vertical thrust fraction" type="float" display="%6.3f"/>
+				<Element name="Max yaw thrust fraction" type="float" display="%6.3f"/>
+                <Element name="Reserve tilt thrust fraction" type="float" display="%6.3f"/>
+				<Element name="Reserve yaw thrust fraction" type="float" display="%6.3f"/>
+            </Group>
+        </Category>
+        
+        <Category name="Launch and Recovery">
+            <Group name="Launch">
+			    <Element name="reserved" type="bitfield" msbit="0" numbits="1"/>
+                <Element name="reserved"/> 		<!-- Prelaunch collective -->
+                <Element name="reserved"/> 		<!-- Prelaunch thrust fraction -->
+                <Element name="reserved"/>      <!-- Prelaunch tail -->
+                <Element name="Launch abort on nav mode" type="bitfield" msbit="1" numbits="1"/>
+                <Element name="Launch abort on nav flags" type="bitfield" msbit="2" numbits="1"/>
+                <Element name="Rotor spinup time" type="float" units="[s]" display="%5.1f"/>
+				<Element name="Rotor spindown time" type="float" units="[s]" display="%5.1f"/>
+                <Element name="reserved"/>  	<!-- Launch RPM threshold -->
+                <Element name="Liftoff AGL" type="float" units="length" display="%6.1f"/>
+                <Element name="Liftoff time" type="float" units="[s]" display="%5.1f"/>
+				<Element name="Flying mode manual throttle trigger" type="float" units="na" display="%6.2f"/>
+				<Element name="Jump Takeoff velocity" type="float" units="speed" display="%5.2f"/>
+				<Element name="Max Pos Err for Climbout" type="float" units="length" display="%5.2f"/>
+            </Group>
+            <Group name="Landing">
+                <Element name="Final appr length" type="float" units="length" display="%6.1f"/>
+                <Element name="Final appr slope" type="float" units="angle" display="%5.2f"/>
+				<Element name="Final appr speed" type="float" units="speed" display="%5.2f"/>
+                <Element name="Final appr AGL" type="float" units="length" display="%6.1f"/>
+                <Element name="Final heading" type="float" units="angle" display="%5.2f"/>
+				<Element name="Use takoff heading" type="bitfield" msbit="7" numbits="1"/>
+                <Element name="Decision AGL" type="float" units="length" display="%6.1f"/>
+                <Element name="Decision pos err" type="float" units="length" display="%5.2f"/>
+                <Element name="Decision alt err" type="float" units="length" display="%5.2f"/>
+                <Element name="Decision vel err" type="float" units="speed" display="%5.2f"/>
+				<Element name="reserved"/>  <!-- Throttle Fraction Trigger High -->
+				<Element name="reserved"/>  <!-- RPM Trigger Low -->
+				<Element name="reserved"/>  <!-- RPM Rate Trigger Low -->
+				<Element name="reserved"/>  <!-- Collective -->
+				<Element name="reserved"/>  <!-- Max Speed -->
+				<Element name="reserved"/>  <!-- Flare AGL -->
+				<Element name="Skip ground check" type="bitfield" msbit="6" numbits="1"/>
+            </Group>
+        </Category>
+
+        <Category name="Sensors and Actuators">
+			<Group name="Actuators">
+                <Element name="RPM calibration used" type="bitfield" msbit="4" numbits="1"/>
+            </Group>
+            <Group name="Sensor low-pass filters">
+				<Element name="reserved"/>
+                <Element name="Roll rate LPF corner freq" type="float" units="Hz" display="%6.1f"/>
+                <Element name="Pitch rate LPF corner freq" type="float" units="Hz" display="%6.1f"/>
+                <Element name="Yaw rate LPF corner freq" type="float" units="Hz" display="%6.1f"/>
+                <Element name="X accel LPF corner freq" type="float" units="Hz" display="%6.1f"/>
+                <Element name="Y accel LPF corner freq" type="float" units="Hz" display="%6.1f"/>
+                <Element name="Z accel LPF corner freq" type="float" units="Hz" display="%6.1f"/>
+                <Element name="AGL comp filter corner freq" type="float" units="Hz" display="%6.3f"/>
+            </Group>
+        </Category>
+        
+        <Category name="Camera Gimbal">
+			<Group name="Servo Gimbal">
+			    <Element name="reserved"/>  <!-- Flags placeholder -->
+                <Element name="Tilt Rate Limit" type="float" units="angle" display="%5.1f"/>
+				<Element name="Tilt Min" type="float" units="angle" display="%5.1f"/>
+				<Element name="Tilt Max" type="float" units="angle" display="%5.1f"/>
+            </Group>
+			<Group name="Test Commands">
+                <Element name="Mode" type="float" units="na" display="%2.0f"/>
+				<Element name="Hdg" type="float" units="angle" display="%5.1f"/>
+                <Element name="Tilt" type="float" units="angle" display="%5.1f"/>
+                <Element name="Lat" type="float" units="angle" display="%9.6f"/> 
+                <Element name="Lon" type="float" units="angle" display="%9.6f"/>  
+                <Element name="Alt" type="float" units="length" display="%5.1f"/>  				
+            </Group>
+            <Group name="Sensor Navigation">
+                <Element name="Pan offset" type="float" units="angle" display="%5.1f"/>
+                <Element name="Min elevation" type="float" units="angle" display="%5.1f"/>
+                <Element name="Max elevation" type="float" units="angle" display="%5.1f"/>  
+            </Group>
+        </Category>
+		
+		<Category name="VLS">
+			<Group name="Flags">
+			    <Element name="Enable vision landing system" type="bitfield" msbit="0" numbits="1"/>
+            </Group>
+			<Group name="Gains">
+                <Element name="Angle P Gain" type="float" units="na" display="%5.2f"/>
+                <Element name="Angle I Gain" type="float" units="na" display="%5.2f"/>
+                <Element name="Angle D Gain" type="float" units="na" display="%5.2f"/>
+			</Group>
+			<Group name="Limits">
+			    <Element name="Max tilt cmd" type="float" units="angle" display="%5.2f"/>
+				<Element name="Max tilt cmd rate" type="float" units="angle" display="%5.2f"/>
+				<Element name="Max pos err for abort" type="float" units="na" display="%5.1f"/>
+            </Group>
+        </Category>
+        
+    </Categories>
+
+</UniversalController>

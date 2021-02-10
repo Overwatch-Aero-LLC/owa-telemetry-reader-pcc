@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="BaseExampleApp" />
+		<Option pch_mode="2" />
+		<Option compiler="sourcery_linux_arm_compiler" />
+		<Build>
+			<Target title="Debug armv7">
+				<Option output="Debug_armv7/BaseExampleApp_armv7d.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Debug_armv7/" />
+				<Option type="1" />
+				<Option compiler="sourcery_linux_arm_compiler" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-mcpu=arm7tdmi -mfloat-abi=soft -mfpu=vfp -g3 -gdwarf-2" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="CommBase_armv7d" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Release armv7">
+				<Option output="Release_armv7/BaseExampleApp_armv7.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Release_armv7/" />
+				<Option type="1" />
+				<Option compiler="sourcery_linux_arm_compiler" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-Wall" />
+					<Add option="-mcpu=arm7tdmi -mfloat-abi=soft -mfpu=vfp" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="CommBase_armv7" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Debug i686">
+				<Option output="Debug_i686/BaseExampleApp_i686d.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Debug_i686/" />
+				<Option type="1" />
+				<Option compiler="sourcery_linux_686_compiler" />
+				<Option parameters="-SERVER=localhost:2000" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-g3 -gdwarf-2" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+					<Add directory="../../" />
+				</Compiler>
+				<Linker>
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="CommBase_i686d" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Release i686">
+				<Option output="Release_i686/BaseExampleApp_i686.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Release_i686/" />
+				<Option type="1" />
+				<Option compiler="sourcery_linux_686_compiler" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-Wall" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+					<Add directory="../../" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="CommBase_i686" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Debug armhf">
+				<Option output="Debug_armhf/BaseExampleApp_armhfd.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Debug_armhf/" />
+				<Option type="1" />
+				<Option compiler="gcclinaroarmlinuxgnuabihf" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-marm -mcpu=arm7tdmi -mfloat-abi=hard -mfpu=vfp -g3 -gdwarf-2" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="..\libCommBase_armhfd.a" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Release armhf">
+				<Option output="Release_armhf/BaseExampleApp_armhf.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Release_armhf/" />
+				<Option type="1" />
+				<Option compiler="gcclinaroarmlinuxgnuabihf" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-Wall" />
+					<Add option="-marm -mcpu=arm7tdmi -mfloat-abi=hard -mfpu=vfp" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="..\libCommBase_armhf.a" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Debug armhf_bb">
+				<Option output="Debug_armhf_bb/BaseExampleApp_armhf_bbd.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Debug_armhf_bb/" />
+				<Option type="1" />
+				<Option compiler="gcclinaroarmlinuxgnuabihf" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-marm -march=armv7-a -mtune=cortex-a8 -mfloat-abi=hard -mfpu=neon -ffast-math -g3 -gdwarf-2 -fPIC" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="..\libCommBase_armhf_bbd.a" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Release armhf_bb">
+				<Option output="Release_armhf_bb/BaseExampleApp_armhf_bb.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Release_armhf_bb/" />
+				<Option type="1" />
+				<Option compiler="gcclinaroarmlinuxgnuabihf" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-Wall" />
+					<Add option="-marm -march=armv7-a -mtune=cortex-a8 -mfloat-abi=hard -mfpu=neon -ffast-math -fPIC" />
+					<Add option="-DIRIDIUM" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="..\libCommBase_armhf_bb.a" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Debug armhf_imx6">
+				<Option output="Debug_armhf_imx6/BaseExampleApp_armhf_imx6d.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Debug_armhf_imx6/" />
+				<Option type="1" />
+				<Option compiler="gcclinaroarmlinuxgnuabihf" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-marm -march=armv7-a -mtune=cortex-a9 -mfloat-abi=hard -mfpu=neon -ffast-math -g3 -gdwarf-2" />
+					<Add option="-DIRIDIUM" />
+					<Add option="-DIMX6" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="..\libCommBase_armhf_imx6d.a" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+			<Target title="Release armhf_imx6">
+				<Option output="Release_armhf_imx6/BaseExampleApp_armhf_imx6.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="Release_armhf_imx6/" />
+				<Option type="1" />
+				<Option compiler="gcclinaroarmlinuxgnuabihf" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-Wall" />
+					<Add option="-marm -march=armv7-a -mtune=cortex-a9 -mfloat-abi=hard -mfpu=neon -ffast-math" />
+					<Add option="-DIRIDIUM" />
+					<Add option="-DIMX6" />
+					<Add directory="../../SDK" />
+					<Add directory="../../../CommonAll" />
+					<Add directory="../../../GimbalSDK" />
+					<Add directory="../../../MPC555Library/Binary" />
+					<Add directory="../../../Serial" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="m" />
+					<Add library="pthread" />
+					<Add library="..\libCommBase_armhf_imx6.a" />
+					<Add directory="../../SDK" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="BaseExampleApp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

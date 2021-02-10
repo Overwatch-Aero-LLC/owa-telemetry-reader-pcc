@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<UniversalController name="Helicopter Neural Net" ID="1" Ver="0">
+
+	<ActuatorTypes num="27">
+			<Type name="no actuator"/>
+			<Type name="Lat. cyclic" type="angle"/>
+			<Type name="Lon. cyclic" type="angle"/>
+			<Type name="Collective" type="angle"/>
+			<Type name="Tail col." type="angle"/>
+			<Type name="Throttle"/>
+			<Type name="Governed throttle"/>
+			<Type name="SWH2 left cyclic"/>
+			<Type name="SWH2 right cyclic"/>
+			<Type name="SWH2 front cyclic"/>
+			<Type name="SWH2 rear cyclic"/>
+			<Type name="SWH4 left cyclic"/>
+			<Type name="SWH4 right cyclic"/>
+			<Type name="SWH4 front cyclic"/>
+			<Type name="SWH4 rear cyclic"/>
+			<Type name="SR-3 left cyclic"/>
+			<Type name="SR-3 right cyclic"/>
+			<Type name="SR-3 rear cyclic"/>
+			<Type name="SR-3REV left cyclic"/>
+			<Type name="SR-3REV right cyclic"/>
+			<Type name="SR-3REV front cyclic"/>
+			<Type name="SN-3 front cyclic"/>
+			<Type name="SN-3 rear cyclic"/>
+			<Type name="SN-3 left cyclic"/>
+			<Type name="SN-3REV front cyclic"/>
+			<Type name="SN-3REV rear cyclic"/>
+			<Type name="SN-3REV right cyclic"/>
+	</ActuatorTypes>
+	
+	
+	<Commands num="6">
+		<Loop name="Altitude" telemetry="agl"     units="length" display="%6.1f"/>
+		<Loop name="Heading"  telemetry="yaw"     units="angle"  display="%5.2f"/>
+		<Loop name="Roll"     telemetry="roll"    units="angle" display="%5.2f"/>
+		<Loop name="Pitch"    telemetry="pitch"   units="angle" display="%5.2f"/>
+		<Loop name="X pos"                        units="length" display="%10.1f"/>
+		<Loop name="Y pos"                        units="length" display="%10.1f"/>
+	</Commands>
+	
+	
+	<Modes num="11">
+		<Mode name="Prelaunch" color="orange"/>
+		<Mode name="Transition" color="orange"/>
+		<Mode name="Rotor spinup" color="orange"/>
+		<Mode name="Lift-off" color="orange"/>
+		<Mode name="Climbout" color="orange"/>
+		<Mode name="Flying" color="green"/>
+		<Mode name="Landing" color="yellow"/>
+		<Mode name="Final approach" color="yellow"/>
+		<Mode name="Initial descent" color="yellow"/>
+		<Mode name="Final hover" color="yellow"/>
+		<Mode name="Final descent" color="yellow"/>
+		<Mode name="Touchdown" color="yellow"/>
+	</Modes>
+	
+	
+	<Categories num="6">
+				
+		<Category name="Reference Model" num="21">
+				
+			<Group name="Dynamics">
+				<Element name="reserved"/>
+				<Element name="Roll natural frequency" type="float" units="na" display="%5.3f"/>
+				<Element name="Pitch natural frequency" type="float" units="na" display="%5.3f"/>
+				<Element name="Yaw natural frequency" type="float" units="na" display="%5.3f"/>
+				<Element name="X natural frequency" type="float" units="na" display="%5.3f"/>
+				<Element name="Y natural frequency" type="float" units="na" display="%5.3f"/>
+				<Element name="Z natural frequency" type="float" units="na" display="%5.3f"/>
+				<Element name="Roll damping" type="float" units="na" display="%5.3f"/>
+				<Element name="Pitch damping" type="float" units="na" display="%5.3f"/>
+				<Element name="Yaw damping" type="float" units="na" display="%5.3f"/>
+				<Element name="X damping" type="float" units="na" display="%5.3f"/>
+				<Element name="Y damping" type="float" units="na" display="%5.3f"/>
+				<Element name="Z damping" type="float" units="na" display="%5.3f"/>
+			</Group>
+			
+			<Group name="Limits">
+				<Element name="Max horizontal vel" type="float" units="speed" display="%6.2f"/>
+				<Element name="Max climb rate" type="float" units="speed" display="%6.2f"/>
+				<Element name="Max descent rate" type="float" units="speed" display="%6.2f"/>
+				<Element name="Max tilt rate"  type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Min yaw rate"  type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Max yaw rate"  type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Max angular accel"  type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Max linear accel" type="float" units="acceleration" display="%6.2f"/>
+			</Group>
+		
+		</Category>
+
+		<Category name="Inner Loops" num="24">
+		
+			<Group name="Dynamics">
+				<Element name="reserved"/>
+				<Element name="Roll A" type="float" units="na" display="%8.4f"/>
+				<Element name="Pitch A" type="float" units="na" display="%8.4f"/>
+				<Element name="Yaw A" type="float" units="na" display="%8.4f"/>
+				<Element name="Roll B" type="float" units="na" display="%7.2f"/>
+				<Element name="Pitch B" type="float" units="na" display="%7.2f"/>
+				<Element name="Yaw B" type="float" units="na" display="%7.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+								
+			<Group name="Trims">
+				<Element name="Roll cyc" type="float" units="angle" display="%6.3f"/>
+				<Element name="Pitch cyc" type="float" units="angle" display="%6.3f"/>
+				<Element name="Tail col" type="float" units="angle" display="%6.3f"/>
+			</Group>
+			
+			<Group name="Limits">
+				<Element name="Max cyc" type="float" units="angle" display="%6.3f"/>
+				<Element name="Min tail col" type="float" units="angle" display="%6.3f"/>
+				<Element name="Max tail col" type="float" units="angle" display="%6.3f"/>
+				<Element name="Max cyc rate"  type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Max tail col rate"  type="float" units="angle_rate" display="%6.2f"/>
+			</Group>
+		
+		</Category>
+		
+		<Category name="Outer Loops" num="19">
+		
+			<Group name="Dynamics">
+				<Element name="reserved"/>
+				<Element name="Vertical Zdel" type="float" units="na" display="%7.2f"/>			
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+								
+			<Group name="Trims">
+				<Element name="Roll angle" type="float" units="angle" display="%6.3f"/>
+				<Element name="Pitch angle" type="float" units="angle" display="%6.3f"/>
+				<Element name="Collective" type="float" units="angle" display="%6.3f"/>
+			</Group>
+			
+			<Group name="Limits">
+				<Element name="Max tilt angle" type="float" units="angle" display="%6.3f"/>
+				<Element name="Min collective" type="float" units="angle" display="%6.3f"/>
+				<Element name="Max collective" type="float" units="angle" display="%6.3f"/>
+				<Element name="Max tilt rate"  type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Max col rate"  type="float" units="angle_rate" display="%6.2f"/>
+			</Group>
+		
+		</Category>
+		
+		<Category name="Command Point" num="8">
+				
+			<Group name="Settings">
+				<Element name="reserved"/>
+				<Element name="Min horizontal vel" type="float" units="speed" display="%6.2f"/>
+				<Element name="Max tangential vel" type="float" units="speed" display="%6.2f"/>
+				<Element name="Max normal vel" type="float" units="speed" display="%6.2f"/>
+				<Element name="Never-exceed airspeed" type="float" units="speed" display="%6.2f"/>
+				<Element name="Convergence parameter" type="float" units="length" display="%6.0f"/>
+				<Element name="Final appr. length" type="float" units="length" display="%6.0f"/>
+				<Element name="TD vertical rate" type="float" units="speed" display="%6.2f"/>
+			</Group>
+				
+		</Category>
+
+		<Category name="Actuator Mixing" num="20">
+				
+			<Group name="Settings">
+				<Element name="Rotation sense CCW" type="bitfield" msbit="0" numbits="1"/>
+				<Element name="Revo mix manual" type="bitfield" msbit="1" numbits="1"/>
+				<Element name="Revo mix auto" type="bitfield" msbit="2" numbits="1"/>
+				<Element name="Notch filter manual" type="bitfield" msbit="3" numbits="1"/>
+				<Element name="Notch filter auto" type="bitfield" msbit="4" numbits="1"/>
+				<Element name="Swashplate down(-) for col(+)" type="bitfield" msbit="5" numbits="1"/>
+			</Group>
+				
+			<Group name="Swashplate geometry">
+				<Element name="Outer radius" type="float" units="na" display="%6.3f"/>
+				<Element name="Grip arm radius" type="float" units="na" display="%6.3f"/>
+				<Element name="Cyclic gain" type="float" units="na" display="%6.3f"/>
+			</Group>
+				
+			<Group name="Revo mixing gain">
+				<Element name="Low" type="float" units="na" display="%6.3f"/>
+				<Element name="High" type="float" units="na" display="%6.3f"/>
+			</Group>
+				
+			<Group name="Notch filters">
+				<Element name="Roll spring constant" type="float" units="na" display="%6.3f"/>
+				<Element name="Pitch spring constant" type="float" units="na" display="%6.3f"/>
+				<Element name="Rotor-flybar time const" type="float" units="na" display="%6.3f"/>
+			</Group>
+			
+			<Group name="Throttle control">
+				<Element name="Min throttle" type="float" display="%6.3f"/>
+				<Element name="Max throttle" type="float" display="%6.3f"/>
+				<Element name="Max thr rate" type="float" display="%6.3f"/>
+				<Element name="Nominal RPM" type="float" display="%8.3f"/>
+				<Element name="Gov prop gain" type="float" display="%8.4f"/>
+				<Element name="Gov integ gain" type="float" display="%8.4f"/>
+			</Group>
+				
+		</Category>
+		
+		<Category name="Neural Network" num="13">
+			<Group name="Settings">
+				<Element name="Enable" type="bitfield" msbit="0" numbits="1"/>
+				<Element name="Input bias" type="float" units="na" display="%6.3f"/>
+				<Element name="Output bias" type="float" units="na" display="%6.3f"/>
+				<Element name="E-modification scaling" type="float" units="na" display="%6.4f"/>
+				<Element name="Input learning rate" type="float" units="na" display="%6.3f"/>
+				<Element name="Output learning rate" type="float" units="na" display="%6.3f"/>
+				<Element name="Upper bound on weights" type="float" units="na" display="%6.3f"/>
+			</Group>	
+			<Group name="Robustifying gains">
+				<Element name="Roll axis" type="float" units="na" display="%6.3f"/>
+				<Element name="Pitch axis" type="float" units="na" display="%6.3f"/>
+				<Element name="Yaw axis" type="float" units="na" display="%6.3f"/>
+				<Element name="X axis" type="float" units="na" display="%6.3f"/>
+				<Element name="Y axis" type="float" units="na" display="%6.3f"/>
+				<Element name="Z axis" type="float" units="na" display="%6.3f"/>
+			</Group>
+		</Category>
+		
+	</Categories>
+
+</UniversalController>

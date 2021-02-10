@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<UniversalController name="Navigator" ID="255" Ver="0">
+
+    <ActuatorTypes num="1">
+        <Type name="no actuator"/>
+    </ActuatorTypes>
+
+    <Commands num="2">
+    	<Loop name="Altitude" telemetry="auto_alt"      units="length" display="%6.1f"/>
+    	<Loop name="Speed"    telemetry="groundspeed"   units="speed"  display="%5.1f"/>
+	<Loop name="Heading"  telemetry="yaw"           units="heading"  display="%5.2f"/>
+    </Commands>
+    
+    <Modes num="1">
+        <Mode name="Normal" color="green"/>
+    </Modes>
+    
+    
+    <Categories num="1">
+        <Category name="Sensor Config">
+            <Group name="Flags">
+            	<Element name="GPS Allowed" type="bitfield" msbit="31" numbits="1"/>
+            	<Element name="Baro Alt Allowed" type="bitfield" msbit="30" numbits="1"/>
+            	<Element name="TAS Allowed" type="bitfield" msbit="29" numbits="1"/>
+            	<Element name="Fixed-Wing Allowed" type="bitfield" msbit="28" numbits="1"/>
+            	<Element name="Static Allowed" type="bitfield" msbit="27" numbits="1"/>
+             </Group>
+        </Category>       
+    </Categories>
+
+</UniversalController>

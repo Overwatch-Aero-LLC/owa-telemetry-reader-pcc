@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<UniversalController name="LTA" ID="4" Ver="0">
+
+	<ActuatorTypes>
+		<Type name="no actuator" type="angle"/>
+		<Type name="Left Elevator" type="angle"/>
+		<Type name="Right Elevator" type="angle"/>
+		<Type name="Rudder" type="angle"/>
+		<Type name="Throttle"/>
+		<Type name="Brake"/>
+		<Type name="Futaba1 (choke)"/>
+		<Type name="Futaba2 (kill)"/>
+		<Type name="Futaba3 (start)"/>
+		<Type name="Air valve"/>
+	</ActuatorTypes>
+	
+	
+	<Commands>
+		<Loop name="IAS"      telemetry="IAS"           units="speed"  display="%5.1f"/>
+		<Loop name="Altitude" telemetry="auto_alt"      units="length" display="%6.1f"/>
+		<Loop name="Turn rate" telemetry="yawrate"      units="angle_rate"  display="%5.2f"/>
+		<Loop name="Heading"  telemetry="groundheading" units="angle"  display="%5.2f"/>
+		<Loop name="VRate"    telemetry="vup"           units="speed"  display="%5.2f"/>			
+		<Loop name="Pitch"    telemetry="pitch"         units="angle"  display="%5.2f"/>	
+	</Commands>
+	
+	
+	<Modes>
+		<Mode name="Prelaunch" color="orange"/>
+		<Mode name="Flying"/>
+	</Modes>
+	
+
+	<Categories>
+	
+		<Category name="Lat Gains">
+				
+			<Group name="Yaw control">
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Yaw rate lpf cutoff"          type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="reserved"/>
+				<Element name="Yaw rate err int to rudder"   type="float" units="na" display="%7.4f"/>
+				<Element name="Yaw rate err to rudder"       type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			
+			<Group name="Track control">
+				<Element name="Tracker convergence"          type="float" units="na" display="%7.4f"/>
+				<Element name="Heading err to turn rate"     type="float" units="na" display="%7.4f"/>
+				<Element name="reserved"/>
+				<Element name="Heading err der to turn rate" type="float" units="na" display="%7.4f"/>
+				<Element name="Along track err to airspeed"  type="float" units="na" display="%7.4f"/>
+			</Group>
+	
+		</Category>
+	
+		<Category name="Lon Gains">
+
+			<Group name="Total energy control">
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Alt err to alt rate"             type="float" units="na" display="%6.3f"/>
+				<Element name="Alt rate lpf cutoff"             type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Throttle Prediction Trust"       type="float" units="na" display="%7.4f"/>
+				<Element name="Energy rate err int to throttle" type="float" units="na" display="%7.4f"/>
+				<Element name="Throttle lpf cutoff"             type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Airspeed control">
+				<Element name="TAS err to TAS rate"       type="float" units="na" display="%5.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+		
+			<Group name="Altitude control">
+				<Element name="Vrate err int to pitch cmd" type="float" units="na" display="%7.4f"/>
+				<Element name="Vrate err to pitch cmd"     type="float" units="na" display="%7.4f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+				
+			<Group name="Pitch damper">
+				<Element name="Pitch err int to elevator"  type="float" units="na" display="%7.4f"/>
+				<Element name="Pitch err to elevator"      type="float" units="na" display="%7.4f"/>
+				<Element name="Pitch rate err to elevator" type="float" units="na" display="%7.4f"/>
+				<Element name="Pitch rate lpf cutoff"      type="float" units="[Hz]" display="%5.2f"/>
+			</Group>	
+				
+			<Group name="RPM control">
+				<Element name="RPM err to RPM rate cmd"       type="float" units="na" display="%5.2f"/>
+				<Element name="RPM rate err int to throttlle" type="float" units="na" display="%7.6f"/>
+				<Element name="reserved"/>
+			</Group>
+	
+			<Group name="Brakes control">
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+			
+		</Category>
+			
+		<Category name="Trims">
+				
+			<Group name="Automatic Trims">
+				<Element name="OnOff" type="int" />
+			</Group>
+			
+			<Group name="Trims">
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Elevator" type="float" units="angle" display="%6.2f"/>
+				<Element name="Throttle" type="float"               display="%6.2f"/>
+				<Element name="Rudder"   type="float" units="angle" display="%6.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+
+		</Category>
+		
+		<Category name="Limits">
+		
+			<Group name="Command">
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Turn rate"          type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="IAS min"            type="float" units="speed"      display="%6.2f"/>
+				<Element name="IAS max"            type="float" units="speed"      display="%6.2f"/>
+				<Element name="Pitch min"          type="float" units="angle"      display="%6.2f"/>
+				<Element name="Pitch max"          type="float" units="angle"      display="%6.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Vertical rate min"  type="float" units="speed"      display="%6.2f"/>
+				<Element name="Vertical rate max"  type="float" units="speed"      display="%6.2f"/>
+				<Element name="RPM min"            type="float" units="[RPM]"      display="%6.1f"/>
+				<Element name="RPM max"            type="float" units="[RPM]"      display="%6.1f"/>
+			</Group>
+			
+			<Group name="Actuator">
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Elevator min"  type="float" units="angle"      display="%6.2f"/>
+				<Element name="Elevator max"  type="float" units="angle"      display="%6.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Rudder max"    type="float" units="angle"      display="%6.2f"/>
+				<Element name="reserved"/>
+				<Element name="Throttle min"  type="float"                    display="%6.2f"/>
+				<Element name="Throttle max"  type="float"                    display="%6.2f"/>
+				<Element name="Throttle rate" type="float" units="[/s]"       display="%6.2f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+		
+		</Category>
+				
+		<Category name="Vehicle">
+		
+			<Group name="Flags">
+				<Element name="Auto elevator effect" type="bitfield" msbit="0" numbits="1"/>
+			</Group>
+						
+			<Group name="Geometry">
+				<Element name="reserved"/>
+				<Element name="Length"            type="float" units="length"   display="%9.3f"/>
+				<Element name="Width"             type="float" units="length" display="%6.2f"/>
+				<Element name="Volume"            type="float" units="volume" display="%6.2f"/>
+				<Element name="Cross section"     type="float" units="area" display="%6.2f"/>
+				<Element name="Tail moment arm"   type="float" units="length" display="%6.2f"/>
+			</Group>
+			
+			<Group name="Mass properties">
+				<Element name="Gross Mass" type="float" units="mass"    display="%9.3f"/>
+				<Element name="Empty Mass" type="float" units="mass"    display="%9.3f"/>
+				<Element name="X Inertia"  type="float" units="inertia" display="%9.3f"/>
+				<Element name="Y Inertia"  type="float" units="inertia" display="%9.3f"/>
+				<Element name="Z Inertia"  type="float" units="inertia" display="%9.3f"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Longitudinal aero">
+				<Element name="Elevator power"      type="float" units="inv_angle" display="%10.6f"/>
+				<Element name="Alpha per elevator"  type="float" units="na" display="%10.6f"/>
+				<Element name="Lift per alpha"      type="float" units="na" display="%10.6f"/>
+			</Group>
+			
+			<Group name="Lever arm offsets">
+				<Element name="IMU to CB X"   type="float" units="length" display="%6.2f"/>
+				<Element name="IMU to CB Y"   type="float" units="length" display="%6.2f"/>
+				<Element name="IMU to CB Z"   type="float" units="length" display="%6.2f"/>
+			</Group>
+			
+			<Group name="Lateral aero">
+				<Element name="Rudder power"                type="float" units="inv_angle" display="%10.6f"/>
+				<Element name="Rudder effect low throttle"  type="float" units="B/dr"      display="%10.6f"/>
+				<Element name="Rudder effect high throttle" type="float" units="B/dr"      display="%10.6f"/>
+				<Element name="Sideslip effect"             type="float" units="inv_angle" display="%10.6f"/>
+				
+			</Group>	
+				
+			<Group name="Engine">
+				<Element name="reserved"/>
+				<Element name="Max engine power" type="float" units="[W]"         display="%9.0f"/>
+				<Element name="Engine SFC"       type="float" units="[g/(kW-hr)]" display="%9.0f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Lift coefficients">
+				<Element name="reserved"/>
+				<Element name="IAS climb"        type="float" units="speed"         display="%9.3f"/>
+				<Element name="IAS cruise"       type="float" units="speed"         display="%9.3f"/>
+				<Element name="IAS descent"      type="float" units="speed"         display="%9.3f"/>
+				<Element name="reserved"/>
+			</Group>
+
+		</Category>
+
+		<Category name="Actuator">
+					
+			<Group name="Mechanics">
+				<Element name="reserved"/>
+				<Element name="Left elev encoder per angle" type="float" units="inv_angle"   display="%9.3f"/>
+				<Element name="Right elev encoder per angle" type="float" units="inv_angle"   display="%9.3f"/>
+				<Element name="Rudder encoder per angle" type="float" units="inv_angle"   display="%9.3f"/>
+				<Element name="reserved"/>
+				<Element name="Brake deflection threshold" type="float" units="angle"   display="%9.3f"/>
+				<Element name="Brake timeout" type="float" units="[s]"   display="%9.3f"/>
+			</Group>
+			
+			<Group name="Feedback">
+				<Element name="Left elev angle err to velocity gain" type="float" units="na"   display="%9.3f"/>
+				<Element name="Right elev angle err to velocity gain" type="float" units="na"   display="%9.3f"/>
+				<Element name="Rudder angle err to velocity gain" type="float" units="na"   display="%9.3f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Actuator velocity limit">
+				<Element name="Left elev max velocity" type="float" units="angle_rate"   display="%9.3f"/>
+				<Element name="Right elev max velocity" type="float" units="angle_rate"   display="%9.3f"/>
+				<Element name="Rudder max velocity" type="float" units="angle_rate"   display="%9.3f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+			
+		</Category>
+
+	</Categories>
+
+</UniversalController>

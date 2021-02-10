@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['ecefheading',['ECEFHeading',['../GreatCircle_8h.html#a58157e9b10aa3beff1866685fe80c85f',1,'GreatCircle.c']]],
+  ['eceftolla',['ECEFtoLLA',['../GreatCircle_8h.html#abd44e7b810c809651519d494d0cd73e1',1,'GreatCircle.c']]],
+  ['eceftollaandned',['ECEFtoLLAandNED',['../GreatCircle_8h.html#aa2c0fc11d9d30f3c0a9c18995fbf02c5',1,'GreatCircle.c']]],
+  ['eceftollaex',['ECEFtoLLAEx',['../GreatCircle_8h.html#a64368cf797e24cce1128e2f6d571f78b',1,'GreatCircle.c']]],
+  ['eceftoned',['ECEFtoNED',['../GreatCircle_8h.html#ad12c5bd0979a728ec19284c27b7cb820',1,'GreatCircle.c']]],
+  ['eceftonedex',['ECEFtoNEDEx',['../GreatCircle_8h.html#a72701a35d648e40fa1913d71a432aecf',1,'GreatCircle.c']]],
+  ['eceftonedexf',['ECEFtoNEDExf',['../GreatCircle_8h.html#a40783e7ebcff0f2ee581ad1113b39e5e',1,'GreatCircle.c']]],
+  ['eceftonedf',['ECEFtoNEDf',['../GreatCircle_8h.html#a56cf29d72fff89536bb6058c655b6740',1,'GreatCircle.c']]],
+  ['eigqr',['EigQR',['../Matrix_8c.html#ab4d4210694d0fa7b0c39f26fba670ecf',1,'EigQR(const double *A, int n, double *lambda, double *V):&#160;Matrix.c'],['../Matrix_8h.html#ab4d4210694d0fa7b0c39f26fba670ecf',1,'EigQR(const double *A, int n, double *lambda, double *V):&#160;Matrix.c']]],
+  ['enableiridiumpower',['EnableIridiumPower',['../IridiumGround_8c.html#a90a9cdde2917a7dd6edcaca8c0f55ec7',1,'EnableIridiumPower(void):&#160;IridiumGround.c'],['../Iridium_8h.html#a90a9cdde2917a7dd6edcaca8c0f55ec7',1,'EnableIridiumPower(void):&#160;IridiumGround.c']]],
+  ['enq',['EnQ',['../Queue_8h.html#a2384132c5c0d4700689eb5c93124dbfa',1,'Queue.c']]],
+  ['enqfast',['EnQFast',['../Queue_8h.html#ac520b06dbb8d4f0cf5fc5c560202a996',1,'Queue.c']]],
+  ['enqsuperfast',['EnQSuperFast',['../Queue_8h.html#af291243469b7aa1b704317e199407abd',1,'Queue.c']]],
+  ['euler2quat',['Euler2Quat',['../attitude_8c.html#a3b29ccff73000d46d1f3980635c4ec50',1,'Euler2Quat(const double Euler[NAXIS], double Quat[N_QUAT]):&#160;attitude.c'],['../attitude_8h.html#a3b29ccff73000d46d1f3980635c4ec50',1,'Euler2Quat(const double Euler[NAXIS], double Quat[N_QUAT]):&#160;attitude.c']]],
+  ['euler2quatf',['Euler2Quatf',['../attitude_8c.html#abe86be29c6e3ce678ddba76a38fe2a4e',1,'Euler2Quatf(const float Euler[NAXIS], float Quat[N_QUAT]):&#160;attitude.c'],['../attitude_8h.html#abe86be29c6e3ce678ddba76a38fe2a4e',1,'Euler2Quatf(const float Euler[NAXIS], float Quat[N_QUAT]):&#160;attitude.c']]],
+  ['euleranglelimits',['EulerAngleLimits',['../Rotations_8h.html#a37d87135bb59c613e05d47de4428a819',1,'Rotations.c']]],
+  ['euleranglelimitsf',['EulerAngleLimitsf',['../Rotations_8h.html#a6dafd4957c6036f3eb02d999164cb51c',1,'Rotations.c']]],
+  ['eulerdynamics',['EulerDynamics',['../attitude_8c.html#a1a9ebf79d56dd9bfc829562e3175f198',1,'EulerDynamics(const double Euler[NAXIS], const double Gyro[NAXIS], double EulerDot[NAXIS]):&#160;attitude.c'],['../attitude_8h.html#a1a9ebf79d56dd9bfc829562e3175f198',1,'EulerDynamics(const double Euler[NAXIS], const double Gyro[NAXIS], double EulerDot[NAXIS]):&#160;attitude.c']]],
+  ['eulerdynamicsf',['EulerDynamicsf',['../attitude_8c.html#acc3043fd1601374c8da76f2e8079dc93',1,'EulerDynamicsf(const float Euler[NAXIS], const float Gyro[NAXIS], float EulerDot[NAXIS]):&#160;attitude.c'],['../attitude_8h.html#acc3043fd1601374c8da76f2e8079dc93',1,'EulerDynamicsf(const float Euler[NAXIS], const float Gyro[NAXIS], float EulerDot[NAXIS]):&#160;attitude.c']]],
+  ['eulererr',['EulerErr',['../attitude_8c.html#a7d827286d3b56ed45a955e5a037fe510',1,'EulerErr(const double Euler1[NAXIS], const double Euler2[NAXIS], double Err[NAXIS]):&#160;attitude.c'],['../attitude_8h.html#a7d827286d3b56ed45a955e5a037fe510',1,'EulerErr(const double Euler1[NAXIS], const double Euler2[NAXIS], double Err[NAXIS]):&#160;attitude.c']]],
+  ['eulererrf',['EulerErrf',['../attitude_8c.html#a83d20899d4f8d82feaf0c30e882f8eb9',1,'EulerErrf(const float Euler1[NAXIS], const float Euler2[NAXIS], float Err[NAXIS]):&#160;attitude.c'],['../attitude_8h.html#a83d20899d4f8d82feaf0c30e882f8eb9',1,'EulerErrf(const float Euler1[NAXIS], const float Euler2[NAXIS], float Err[NAXIS]):&#160;attitude.c']]],
+  ['evaluatebsplinecurve',['EvaluateBsplineCurve',['../BsplineCurve_8c.html#ae3d542976f41041314a6da5e435b5637',1,'EvaluateBsplineCurve(const double P[][3], int n, const double *uc, int m, double u, double C[3]):&#160;BsplineCurve.c'],['../BsplineCurve_8h.html#ae3d542976f41041314a6da5e435b5637',1,'EvaluateBsplineCurve(const double P[][3], int n, const double *uc, int m, double u, double C[3]):&#160;BsplineCurve.c']]],
+  ['evaluatebsplinecurvefirstderiv',['EvaluateBsplineCurveFirstDeriv',['../BsplineCurve_8c.html#a03c6f6e33f24679945ed84b8c7399f65',1,'EvaluateBsplineCurveFirstDeriv(const double Q1[][3], int n, const double *uc, int m, double u, double dCdu[3]):&#160;BsplineCurve.c'],['../BsplineCurve_8h.html#a03c6f6e33f24679945ed84b8c7399f65',1,'EvaluateBsplineCurveFirstDeriv(const double Q1[][3], int n, const double *uc, int m, double u, double dCdu[3]):&#160;BsplineCurve.c']]],
+  ['evaluatebsplinecurvesecondderiv',['EvaluateBsplineCurveSecondDeriv',['../BsplineCurve_8c.html#ad6302e9693bad3734fe079e3c67c0915',1,'EvaluateBsplineCurveSecondDeriv(const double Q2[][3], int n, const double *uc, int m, double u, double d2Cdu2[3]):&#160;BsplineCurve.c'],['../BsplineCurve_8h.html#ad6302e9693bad3734fe079e3c67c0915',1,'EvaluateBsplineCurveSecondDeriv(const double Q2[][3], int n, const double *uc, int m, double u, double d2Cdu2[3]):&#160;BsplineCurve.c']]]
+];

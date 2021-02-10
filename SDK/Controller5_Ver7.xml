@@ -1,0 +1,682 @@
+<?xml version="1.0"?>
+<UniversalController name="Fixed wing gen 3" ID="5" Ver="7">
+
+	<ControlAxes>
+		
+		<ControlAxis name="Aileron" type="roll">
+			<TestLeft  label="Left"  ch0="-1" ch1="0" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+			<TestRight label="Right" ch0="1"  ch1="0" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+		</ControlAxis>
+
+		<ControlAxis name="Elevator" type="pitch">
+			<TestLeft  label="Up"   ch0="0" ch1="-1" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+			<TestRight label="Down" ch0="0" ch1="1"  ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+		</ControlAxis>
+
+		<ControlAxis name="Throttle" type="thrust">
+			<TestLeft  label="Closed" ch0="0" ch1="0" ch2="-1" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+			<TestRight label="Open"   ch0="0" ch1="0" ch2="1"  ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+		</ControlAxis>
+
+		<ControlAxis name="Rudder" type="yaw">
+			<TestLeft  label="Left"  ch0="0" ch1="0" ch2="throt" ch3="-1" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+			<TestRight label="Right" ch0="0" ch1="0" ch2="throt" ch3="1"  ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+		</ControlAxis>
+
+		<ControlAxis name="Flaps" type="flap">
+			<TestLeft  label="Up"   ch0="0" ch1="0" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+			<TestRight label="Down" ch0="0" ch1="0" ch2="throt" ch3="0" ch4="1"  ch5="na" ch6="1" ch7="-1"/>
+		</ControlAxis>
+
+		<ControlAxis name="Brakes" type="brake">
+			<TestLeft  label="Release" ch0="0" ch1="0" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="-1" ch7="-1"/>
+			<TestRight label="Apply"   ch0="0" ch1="0" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1"  ch7="-1"/>
+		</ControlAxis>
+
+		<ControlAxis name="Chute" type="parachute">
+			<TestLeft  label="Retract" ch0="0" ch1="0" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="-1"/>
+			<TestRight label="Deploy"  ch0="0" ch1="0" ch2="throt" ch3="0" ch4="-1" ch5="na" ch6="1" ch7="1" />
+		</ControlAxis>
+		
+  	</ControlAxes>
+
+
+	<ActuatorTypes num="39">
+		<Type name="no actuator" type="angle"/>
+		<Type name="L. aileron" type="angle"/>
+		<Type name="R. aileron" type="angle"/>
+		<Type name="Elevator" type="angle"/>
+		<Type name="Canard" type="angle"/>
+		<Type name="Rudder" type="angle"/>
+		<Type name="L. Flap" type="angle"/>
+		<Type name="R. Flap" type="angle"/>
+		<Type name="Left Throttle"/>
+		<Type name="Brake"/>
+		<Type name="Nosegear" type="angle"/>
+		<Type name="L. elevon" type="angle"/>
+		<Type name="R. elevon" type="angle"/>
+		<Type name="L. ruddervator" type="angle"/>
+		<Type name="R. ruddervator" type="angle"/>
+		<Type name="L. inv ruddervator" type="angle"/>
+		<Type name="R. inv ruddervator" type="angle"/>
+		<Type name="Tailwheel" type="angle"/>
+		<Type name="L. rudder" type="angle"/>
+		<Type name="R. rudder" type="angle"/>
+		<Type name="L. Brake"/>
+		<Type name="R. Brake"/>
+		<Type name="L. canarderon" type="angle"/>
+		<Type name="R. canarderon" type="angle"/>
+		<Type name="Right Throttle"/>
+		<Type name="L. Speed brake" type="angle"/>
+		<Type name="R. Speed brake" type="angle"/>
+		<Type name="L. Brakeron0" type="angle"/>
+		<Type name="L. Brakeron1" type="angle"/>
+		<Type name="L. Brakeron2" type="angle"/>
+		<Type name="L. Brakeron3" type="angle"/>
+		<Type name="R. Brakeron3" type="angle"/>
+		<Type name="R. Brakeron2" type="angle"/>
+		<Type name="R. Brakeron1" type="angle"/>
+		<Type name="R. Brakeron0" type="angle"/>
+		<Type name="L. outboard elevon" type="angle"/>
+		<Type name="L. inboard elevon" type="angle"/>
+		<Type name="R. inboard elevon" type="angle"/>
+		<Type name="R. outboard elevon" type="angle"/>				
+	</ActuatorTypes>
+	
+	
+	<Commands num="7">
+		<Loop name="IAS"      telemetry="IAS"           units="speed"  display="%5.1f"/>
+		<Loop name="Altitude" telemetry="auto_alt"      units="length" display="%6.1f"/>
+		<Loop name="Bank"     telemetry="roll"          units="angle"  display="%5.2f"/>
+		<Loop name="Flaps"                              units="angle"  display="%5.2f"/>
+		<Loop name="Heading"  telemetry="groundheading" units="angle"  display="%5.2f"/>
+		<Loop name="VRate"    telemetry="vup"           units="speed"  display="%5.2f"/>
+		<Loop name="Pitch"    telemetry="pitch"         units="angle"  display="%5.2f"/>
+	</Commands>
+	
+	
+	<Modes num="15">
+		<Mode name="Prelaunch" color="orange"/>
+		<Mode name="Transition" color="orange"/>
+		<Mode name="Liftoff" color="orange"/>
+		<Mode name="Climbout" color="orange"/>
+		<Mode name="Flying"/>
+		<Mode name="Landing" color="yellow"/>
+		<Mode name="Downwind" color="yellow"/>
+		<Mode name="Base" color="yellow"/>
+		<Mode name="Final approach" color="yellow"/>
+		<Mode name="Short final" color="yellow"/>
+		<Mode name="Touchdown" color="yellow"/>
+		<Mode name="Rollout" color="yellow"/>
+		<Mode name="Final touch and go" color="cyan"/>
+		<Mode name="Short touch and go" color="cyan"/>
+		<Mode name="Touch and go" color="cyan"/>
+	</Modes>
+	
+
+	<Categories num="12">
+	
+		<Category name="Lat Gains">
+			
+			<Group name="Flags">
+				<Element name="Tangent Orbit Tracking" type="bitfield" msbit="31" numbits="1"/>
+			</Group>
+						
+			<Group name="Roll control">
+				<Element name="Roll rate lpf cutoff"         type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Roll bandwidth"  	     type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Roll max accel"		     type="float" units="[rad/s/s]" display="%5.2f"/>
+				<Element name="Roll damping trust"	     type="float" units="na" display="%5.2f"/>
+				<Element name="Roll rate err to accel"       type="float" units="na" display="%7.4f"/>
+				<Element name="Roll rate err int to accel"   type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Yaw control">
+				<Element name="Yaw rate lpf cutoff"          type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Yaw rate err to rudder"       type="float" units="na" display="%7.4f"/>
+				<Element name="Side force err int to rudder" type="float" units="na" display="%7.4f"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Manual yaw control">
+				<Element name="Manual yaw rate to rudder"    type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Steering control">
+				<Element name="Y to Vy scaling power"         type="float" units="na" display="%7.4f"/>
+				<Element name="Track Y to Vy"                 type="float" units="na" display="%7.4f"/>
+				<Element name="Track Vy err int to nose gear" type="float" units="na" display="%7.4f"/>
+				<Element name="Track Vy err pro to nose gear" type="float" units="na" display="%7.4f"/>
+				<Element name="Yaw rate to nose gear"         type="float" units="na" display="%7.4f"/>
+				<Element name="Vy to nosegear scaling power"  type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Track control">
+				<Element name="Tracker convergence"          type="float" units="na" display="%7.4f"/>
+				<Element name="Heading err to turn rate"     type="float" units="na" display="%7.4f"/>
+				<Element name="Heading err der to turn rate" type="float" units="na" display="%7.4f"/>
+				<Element name="Turn err lpf cutoff"          type="float" units="[Hz]" display="%5.2f"/>
+			</Group>
+	
+		</Category>
+	
+		<Category name="Lon Gains">
+		
+			<Group name="Flags">
+				<Element name="Auto brakes in manual" type="bitfield" msbit="30" numbits="1"/>
+				<Element name="Default longitudinal mode" type="bitfield" msbit="29" numbits="1"/>
+			</Group>
+			
+			<Group name="Altitude control">
+				<Element name="Alt rate lpf cutoff"      type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Alt bandwidth"  		 type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Alt max accel"		 type="float" units="[m/s/s]" display="%5.2f"/>
+				<Element name="Alt rate cmd to pitch"	 type="float" units="na" display="%7.4f"/>
+				<Element name="Alt rate err to pitch"	 type="float" units="na" display="%7.4f"/>
+				<Element name="Alt rate err int to pitch" type="float" units="na" display="%7.4f"/>
+			</Group>
+
+			<Group name="Airspeed control">
+				<Element name="reserved"/>
+				<Element name="TAS bandwidth"  		  type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="TAS max rate"		  type="float" units="[m/s/s]" display="%5.2f"/>
+				<Element name="TAS rate err to vrate"	  type="float" units="na" display="%7.4f"/>
+				<Element name="TAS rate err int to vrate" type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Energy control">
+				<Element name="Throttle Prediction Trust" type="float" units="na" display="%7.4f"/>
+				<Element name="Throttle lpf cutoff"	  type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Energy bandwidth"	  type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Power err to throttle"     type="float" units="na" display="%7.4f"/>
+				<Element name="Power err int to throttle" type="float" units="na" display="%7.4f"/>				
+			</Group>
+			
+			<Group name="mode control">
+				<Element name="reserved"/>
+				<Element name="Slow IAS error threshold"  type="float" units="speed" display="%5.2f"/>
+				<Element name="Fast IAS error threshold"  type="float" units="speed" display="%5.2f"/>
+			</Group>
+				
+			<Group name="Pitch control">
+				<Element name="Pitch rate lpf cutoff"      type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Pitch bandwidth"  	   type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Pitch max accel"		   type="float" units="[rad/s/s]" display="%5.2f"/>
+				<Element name="Pitch stiffness trust"      type="float" units="na" display="%5.2f"/>
+				<Element name="Pitch damping trust" 	   type="float" units="na" display="%5.2f"/>
+				<Element name="Pitch rate err to accel"    type="float" units="na" display="%7.4f"/>
+				<Element name="Pitch rate err int to accel" type="float" units="na" display="%7.4f"/>
+			</Group>	
+				
+			<Group name="RPM control">
+				<Element name="RPM err to RPM rate cmd"       type="float" units="na" display="%5.2f"/>
+				<Element name="RPM rate err to throttlle"     type="float" units="na" display="%7.6f"/>
+				<Element name="RPM rate err int to throttlle" type="float" units="na" display="%7.6f"/>
+			</Group>
+	
+			<Group name="Brakes control">
+				<Element name="reserved"/>
+				<Element name="Accel err int to brakes" type="float" units="na" display="%5.2f"/>
+			</Group>
+			
+		</Category>
+			
+		<Category name="Trims">
+			
+			<Group name="Trims">
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+				<Element name="Aileron"  type="float" units="angle" display="%6.2f"/>
+				<Element name="Elevator" type="float" units="angle" display="%6.2f"/>
+				<Element name="Throttle" type="float"               display="%6.2f"/>
+				<Element name="Rudder"   type="float" units="angle" display="%6.2f"/>
+				<Element name="Flap"     type="float" units="angle" display="%6.2f"/>
+				<Element name="Nosegear" type="float" units="angle" display="%6.2f"/>
+				<Element name="reserved"/>
+			</Group>
+
+		</Category>
+		
+		<Category name="Limits">
+		
+			<Group name="Command">
+				<Element name="reserved"/>
+				<Element name="Bank max"           type="float" units="angle"      display="%6.2f"/>
+				<Element name="Roll rate max"      type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Pitch min"          type="float" units="angle"      display="%6.2f"/>
+				<Element name="Pitch max"          type="float" units="angle"      display="%6.2f"/>
+				<Element name="Pitch rate max"     type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="IAS max"            type="float" units="speed"      display="%6.2f"/>
+				<Element name="Descent max fraction" type="float"                  display="%6.2f"/>
+				<Element name="Climb max fraction" type="float"                    display="%6.2f"/>
+				<Element name="Load factor min"    type="float" units="[g]"        display="%6.2f"/>
+				<Element name="Load factor max"    type="float" units="[g]"        display="%6.2f"/>
+				<Element name="RPM min"            type="float" units="[RPM]"      display="%6.1f"/>
+				<Element name="RPM max"            type="float" units="[RPM]"      display="%6.1f"/>
+				<Element name="RPM rate filter"    type="float" units="[RPM/s]"    display="%8.0f"/>
+			</Group>
+			
+			<Group name="Actuator">
+				<Element name="Aileron max"   type="float" units="angle"      display="%6.2f"/>
+				<Element name="Elevator min"  type="float" units="angle"      display="%6.2f"/>
+				<Element name="Elevator max"  type="float" units="angle"      display="%6.2f"/>
+				<Element name="Nose gear max" type="float" units="angle"      display="%6.2f"/>
+				<Element name="Rudder max"    type="float" units="angle"      display="%6.2f"/>
+				<Element name="Throttle min"  type="float"                    display="%6.2f"/>
+				<Element name="Throttle max"  type="float"                    display="%6.2f"/>
+				<Element name="Throttle rate" type="float" units="[/s]"       display="%6.2f"/>
+				<Element name="Flap min"      type="float" units="angle"      display="%6.2f"/>
+				<Element name="Flap max"      type="float" units="angle"      display="%6.2f"/>
+				<Element name="Flap rate"     type="float" units="angle_rate" display="%6.2f"/>
+			</Group>
+		
+		</Category>
+				
+		<Category name="Vehicle">
+		
+			<Group name="Flags">
+				<Element name="Auto aileron power" type="bitfield" msbit="0" numbits="1"/>
+				<Element name="Auto elevator power" type="bitfield" msbit="1" numbits="1"/>
+				<Element name="Auto rudder power" type="bitfield" msbit="2" numbits="1"/>
+			</Group>
+						
+			<Group name="Geometry">
+				<Element name="reserved"/>
+				<Element name="Wing area"         type="float" units="area"   display="%9.3f"/>
+				<Element name="Wing span"         type="float" units="length" display="%6.2f"/>
+				<Element name="Vertical tail arm" type="float" units="length" display="%6.2f"/>
+				<Element name="Steering arm"      type="float" units="length" display="%6.2f"/>
+			</Group>
+			
+			<Group name="Mass properties">
+				<Element name="reserved"/>
+				<Element name="Gross Mass" type="float" units="mass"    display="%9.3f"/>
+				<Element name="Empty Mass" type="float" units="mass"    display="%9.3f"/>
+				<Element name="Payload Mass" type="float" units="mass"  display="%9.3f"/>
+				<Element name="X Inertia"  type="float" units="inertia" display="%9.3f"/>
+				<Element name="Y Inertia"  type="float" units="inertia" display="%9.3f"/>
+				<Element name="Z Inertia"  type="float" units="inertia" display="%9.3f"/>
+			</Group>
+			
+			<Group name="Longitudinal S+C">
+				<Element name="reserved"/>
+				<Element name="Lift Slope"	type="float" units="inv_angle" 	display="%10.6f"/>
+				<Element name="Elevator power"	type="float" units="inv_angle" 	display="%10.6f"/>			
+				<Element name="Pitch damping"	type="float" units="Cm/qbar"  	display="%10.5f"/>
+				<Element name="Pitch stiffness"	type="float" units="inv_angle"  display="%10.5f"/>
+				<Element name="Pitch offset"	type="float" units="na"  	display="%10.5f"/>
+			</Group>
+			
+			<Group name="Lateral S+C">
+				<Element name="reserved"/>
+				<Element name="Aileron power"   type="float" units="inv_angle" 	display="%10.5f"/>
+				<Element name="Roll damping"    type="float" units="Cl/pbar"  	display="%10.5f"/>
+			</Group>	
+				
+			<Group name="Directional S+C">
+				<Element name="reserved"/>
+				<Element name="Rudder effect"   type="float" units="B/dr"      	display="%10.6f"/>
+				<Element name="Rudder power"    type="float" units="inv_angle" 	display="%10.6f"/>
+				<Element name="Yaw damping"     type="float" units="Cm/qbar"  	display="%10.5f"/>
+				<Element name="Sideslip effect" type="float" units="inv_angle" 	display="%10.6f"/>
+				<Element name="Yaw roll coupling" type="float" units="Cm/qbar" 	display="%10.5f"/>
+			</Group>	
+			
+			<Group name="Drag">
+				<Element name="reserved"/>
+				<Element name="Base drag"        type="float" units="[CDo]"  display="%10.6f"/>
+				<Element name="Span efficiency"  type="float" units="[e]"    display="%10.6f"/>
+			</Group>
+
+			<Group name="Engine">
+				<Element name="reserved"/>
+				<Element name="Max engine power" type="float" units="[W]"         display="%9.0f"/>
+				<Element name="Engine SFC"       type="float" units="[g/(kW-hr)]" display="%9.0f"/>
+			</Group>
+			
+			<Group name="Flaps">
+				<Element name="reserved"/>
+				<Element name="dCL per dFlap" 	 type="float" units="inv_angle"   display="%10.6f"/>
+				<Element name="dCD per dFlap" 	 type="float" units="inv_angle"   display="%10.6f"/>
+			</Group>
+
+			<Group name="Lift coefficients">
+				<Element name="CL loiter"        type="float" units="na"         display="%9.3f"/>
+				<Element name="CL max"           type="float" units="na"         display="%9.3f"/>
+				<Element name="CL max nom"       type="float" units="na"         display="%9.3f"/>
+				<Element name="CL climb"         type="float" units="na"         display="%9.3f"/>
+				<Element name="CL cruise"        type="float" units="na"         display="%9.3f"/>
+				<Element name="CL flap max inc"  type="float" units="na"         display="%9.3f"/>
+				<Element name="CL min"		 type="float" units="na"         display="%9.3f"/>
+			</Group>
+
+		</Category>
+
+		<Category name="Mixing">
+																					
+			<Group name="Mixing">
+				<Element name="reserved"/>
+				<Element name="Nosegear to diff brakes"    type="float" units="inv_angle" display="%5.2f"/>
+				<Element name="Throttle to rudder"         type="float" units="angle" display="%5.2f"/>
+				<Element name="Flap to elevator"           type="float" units="na" display="%5.2f"/>
+				<Element name="Aileron to rudder"          type="float" units="na" display="%5.2f"/>
+				<Element name="Aileron differential"       type="float" units="na" display="%5.2f"/>
+				<Element name="Flaperon ratio"             type="float" units="na" display="%5.2f"/>
+				<Element name="Manual Rudder to nose gear" type="float" units="na" display="%5.2f"/>
+				<Element name="Auto Nose gear to rudder"   type="float" units="na" display="%5.2f"/>
+				<Element name="Rudder differential"        type="float" units="na" display="%5.2f"/>
+				<Element name="Rudder to diff Speedbrakes" type="float" units="na" display="%5.2f"/>
+				<Element name="Speedbrake to elevator"     type="float" units="na" display="%5.2f"/>
+				<Element name="Speedbrake to flap"         type="float" units="na" display="%5.2f"/>
+				<Element name="Flap to AileronToRudder"    type="float" units="inv_angle" display="%5.2f"/>
+				<Element name="Load Factor to Throttle"    type="float" units="na" display="%5.2f"/>
+			</Group>
+
+		</Category>
+		
+		<Category name="Landing">
+						
+			<Group name="Landing Type">
+				<Element name="Type" type="enum" msbit="28" numbits="4" values="Wheeled Belly Net" />
+			</Group>
+			
+			<Group name="Pattern">
+				<Element name="Approach Slope"   type="float" units="angle"  display="%5.2f"/>
+				<Element name="Short Final Slope"type="float" units="angle"  display="%5.2f"/>
+				<Element name="Pattern Max AGL"  type="float" units="length" display="%7.3f"/>
+				<Element name="Approach length"  type="float" units="length" display="%4.0f"/>
+				<Element name="Go around length" type="float" units="length" display="%4.0f"/>
+				<Element name="Cross length"     type="float" units="length" display="%4.0f"/>
+                <Element name="Abort lateral offset" type="float" units="length" display="%5.1f"/>
+			</Group>
+			
+			<Group name="AGL Sensor">
+				<Element name="Distance to go for AGL alt"  type="float" units="length" display="%4.0f"/>
+				<Element name="Distance to go for AGL rate" type="float" units="length" display="%4.0f"/>
+			</Group>
+			
+			<Group name="Flaps">
+				<Element name="Additional flaperon ratio" type="float" units="na" display="%5.2f"/>
+				<Element name="Go around flaps" type="float" units="angle" display="%5.2f"/>
+				<Element name="Down wind flaps" type="float" units="angle" display="%5.2f"/>
+				<Element name="Base leg flaps" type="float" units="angle" display="%5.2f"/>
+				<Element name="Final approach flaps" type="float" units="angle" display="%5.2f"/>
+				<Element name="Short final flaps" type="float" units="angle" display="%5.2f"/>				
+				<Element name="Rollout flaps" type="float" units="angle" display="%5.2f"/>				
+			</Group>
+			
+			<Group name="Speeds">
+				<Element name="Approach Speed fraction" type="float" units="na" display="%5.2f"/>
+				<Element name="Short Final Speed fraction" type="float" units="na" display="%5.2f"/>
+				<Element name="Touchdown Speed fraction" type="float" units="na" display="%5.2f"/>
+			</Group>
+
+			<Group name="Decision">
+				<Element name="Decision time" type="float" units="[s]"    display="%5.2f"/>
+				<Element name="Y max error"   type="float" units="length" display="%5.2f"/>
+				<Element name="Z max error"   type="float" units="length" display="%5.2f"/>
+				<Element name="Max overspeed" type="float" units="speed"  display="%5.2f"/>
+				<Element name="Max impact speed" type="float" units="speed"  display="%5.2f"/>
+                <Element name="Min impact speed" type="float" units="speed"  display="%5.2f"/>
+				<Element name="Abort if no RTKn or AGL" type="bitfield" msbit="4" />
+                <Element name="Abort to downwind" type="bitfield" msbit="3" />
+				<Element name="Ignore abort time" type="float" units="[s]"    display="%5.2f"/>                
+			</Group>
+			
+			<Group name="Flare">
+				<Element name="Flare height"     type="float" units="length" display="%5.3f"/>
+				<Element name="Sink rate"        type="float" units="speed"  display="%5.3f"/>
+				<Element name="Engine kill time" type="float" units="[s]"    display="%5.2f"/>
+				<Element name="Engine kill on Net" type="bitfield" msbit="2" />				
+				<Element name="Max cross control slip" type="float" units="angle" display="%5.2f"/>				
+				<Element name="Max touchdown bank" type="float" units="angle" display="%5.2f"/>				
+				<Element name="Early touchdown threshold" type="float" units="na" display="%5.2f"/>
+				<Element name="Touchdown threshold" type="float" units="na" display="%5.2f"/>                
+			</Group>
+
+			<Group name="Rollout">
+				<Element name="Rolling elevator" type="float" units="angle"  display="%5.2f"/>
+				<Element name="Deceleration cmd" type="float" units="[m/s/s]"  display="%5.2f"/>
+				<Element name="Rollout wing leveling" type="bitfield" msbit="5" />
+			</Group>
+			
+		</Category>
+
+		<Category name="Launch">
+						
+			<Group name="Launch Type">
+				<Element name="Type" type="enum" msbit="28" numbits="4" values="Catapult Wheeled Balloon Tube Cartop Vertical HandElectric"/>
+			</Group>
+			
+			<Group name="Prelaunch">
+				<Element name="reserved"/>
+				<Element name="Flaps"    type="float" units="angle" display="%5.2f"/>
+				<Element name="Throttle" type="float" units="na" display="%5.2f"/>
+				<Element name="Brakes"   type="float" units="na" display="%5.2f"/>
+				<Element name="Catapult launch delay" type="float" units="[s]" display="%5.2f"/>
+				<Element name="Catapult throttle delay" type="float" units="[s]" display="%5.2f"/>				
+			</Group>
+			
+			<Group name="Safety checks">
+				<Element name="Max cross error"   type="float" units="length"  display="%5.1f"/>
+				<Element name="Minimum RPM"       type="float" units="na"      display="%5.0f"/>
+				<Element name="reserved"/>
+			</Group>
+
+			<Group name="Engine control">
+				<Element name="reserved"/>
+				<Element name="Acceleration"      type="float" units="[m/s/s]" display="%5.2f"/>
+				<Element name="Slow Throttle rate" type="float" units="[/s]" display="%6.3f"/>
+				<Element name="Fast Throttle rate" type="float" units="[/s]" display="%6.3f"/>
+				<Element name="Throttle switch speed" type="float" units="speed" display="%6.2f"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Rotation">
+				<Element name="Rolling elevator"  type="float" units="angle"   display="%5.2f"/>
+				<Element name="Rotation elevator" type="float" units="angle"   display="%5.2f"/>
+				<Element name="Rotation time"     type="float" units="[s]"     display="%5.2f"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Speeds and time">
+				<Element name="Throttle hold time" type="float" units="[s]" display="%5.2f"/>
+				<Element name="Climb speed fraction"  type="float" units="na"  display="%5.2f"/>
+				<Element name="Rotation speed fraction"  type="float" units="na"  display="%5.2f"/>
+				<Element name="Climbout time" type="float" units="[s]" display="%5.2f"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Actions">
+				<Element name="Action 1 time" type="float" units="[s]" display="%5.2f"/>
+				<Element name="Action 1 throttle hold" type="bitfield" msbit="27" numbits="1"/>
+				<Element name="Action 2 time" type="float" units="[s]" display="%5.2f"/>
+				<Element name="Action 2 throttle hold" type="bitfield" msbit="26" numbits="1"/>
+				<Element name="Action 3 time" type="float" units="[s]" display="%5.2f"/>
+				<Element name="Action 3 throttle hold" type="bitfield" msbit="25" numbits="1"/>
+				<Element name="Action 4 time" type="float" units="[s]" display="%5.2f"/>
+				<Element name="Action 4 throttle hold" type="bitfield" msbit="24" numbits="1"/>
+				<Element name="reserved"/>
+			</Group>
+						
+		</Category>
+		
+		<Category name="Sensor Navigation">
+								
+			<Group name="Setup">
+				<Element name="Type" type="enum" values="Off Left Right Terminal"/>
+			</Group>
+
+			<Group name="Commands">
+				<Element name="reserved"/>
+				<Element name="Pan Offset" type="float" units="angle" display="%5.2f"/>
+				<Element name="reserved"/>
+				<Element name="Desired Elevation" type="float" units="angle" display="%5.2f"/>
+				<Element name="reserved"/>
+			</Group>
+
+			<Group name="Feedback">
+				<Element name="Error lpf cutoff"     type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="reserved"/>
+				<Element name="Elevation err to Pan" type="float" units="na" display="%5.3f"/>
+				<Element name="reserved"/>
+				<Element name="Pan err to turn rate" type="float" units="na" display="%5.3f"/>
+				<Element name="Pan err rate int to turn rate" type="float" units="na" display="%5.3f"/>
+				<Element name="reserved"/>
+				<Element name="Tilt err to Pitch" type="float" units="na" display="%5.3f"/>
+				<Element name="Tilt err rate int to Pitch" type="float" units="na" display="%5.3f"/>
+				<Element name="Tilt err rate to Pitch" type="float" units="na" display="%5.3f"/>
+				<Element name="reserved"/>
+				<Element name="reserved"/>
+			</Group>
+			
+		</Category>
+		
+		<Category name="Landing Lat Gains">
+			
+			<Group name="Flags">
+				<Element name="Diff from Lat Gains" type="bitfield" msbit="0" numbits="1"/>			
+				<Element name="Tangent Orbit Tracking" type="bitfield" msbit="31" numbits="1"/>
+			</Group>
+						
+			<Group name="Roll control">
+				<Element name="Roll rate lpf cutoff"         type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Roll bandwidth"  	     type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Roll max accel"		     type="float" units="[rad/s/s]" display="%5.2f"/>
+				<Element name="Roll damping trust"	     type="float" units="na" display="%5.2f"/>
+				<Element name="Roll rate err to accel"       type="float" units="na" display="%7.4f"/>
+				<Element name="Roll rate err int to accel"   type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Yaw control">
+				<Element name="Yaw rate lpf cutoff"          type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Yaw rate err to rudder"       type="float" units="na" display="%7.4f"/>
+				<Element name="Side force err int to rudder" type="float" units="na" display="%7.4f"/>
+				<Element name="reserved"/>
+			</Group>
+			
+			<Group name="Manual yaw control">
+				<Element name="Manual yaw rate to rudder"    type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Steering control">
+				<Element name="Y to Vy scaling power"         type="float" units="na" display="%7.4f"/>
+				<Element name="Track Y to Vy"                 type="float" units="na" display="%7.4f"/>
+				<Element name="Track Vy err int to nose gear" type="float" units="na" display="%7.4f"/>
+				<Element name="Track Vy err pro to nose gear" type="float" units="na" display="%7.4f"/>
+				<Element name="Yaw rate to nose gear"         type="float" units="na" display="%7.4f"/>
+				<Element name="Vy to nosegear scaling power"  type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Track control">
+				<Element name="Tracker convergence"          type="float" units="na" display="%7.4f"/>
+				<Element name="Heading err to turn rate"     type="float" units="na" display="%7.4f"/>
+				<Element name="Heading err der to turn rate" type="float" units="na" display="%7.4f"/>
+				<Element name="Turn err lpf cutoff"          type="float" units="[Hz]" display="%5.2f"/>
+			</Group>
+	
+		</Category>
+
+		<Category name="Landing Lon Gains">
+		
+			<Group name="Flags">
+				<Element name="Diff from Lon Gains" type="bitfield" msbit="0" numbits="1"/>			
+				<Element name="Auto brakes in manual" type="bitfield" msbit="30" numbits="1"/>
+				<Element name="Default longitudinal mode" type="bitfield" msbit="29" numbits="1"/>
+			</Group>
+			
+			<Group name="Altitude control">
+				<Element name="Alt rate lpf cutoff"      type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Alt bandwidth"  		 type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Alt max accel"		 type="float" units="[m/s/s]" display="%5.2f"/>
+				<Element name="Alt rate cmd to pitch"	 type="float" units="na" display="%7.4f"/>
+				<Element name="Alt rate err to pitch"	 type="float" units="na" display="%7.4f"/>
+				<Element name="Alt rate err int to pitch" type="float" units="na" display="%7.4f"/>
+			</Group>
+
+			<Group name="Airspeed control">
+				<Element name="reserved"/>
+				<Element name="TAS bandwidth"  		  type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="TAS max rate"		  type="float" units="[m/s/s]" display="%5.2f"/>
+				<Element name="TAS rate err to vrate"	  type="float" units="na" display="%7.4f"/>
+				<Element name="TAS rate err int to vrate" type="float" units="na" display="%7.4f"/>
+			</Group>
+			
+			<Group name="Energy control">
+				<Element name="Throttle Prediction Trust" type="float" units="na" display="%7.4f"/>
+				<Element name="Throttle lpf cutoff"	  type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Energy bandwidth"	  type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Power err to throttle"     type="float" units="na" display="%7.4f"/>
+				<Element name="Power err int to throttle" type="float" units="na" display="%7.4f"/>				
+			</Group>
+			
+			<Group name="mode control">
+				<Element name="reserved"/>
+				<Element name="Slow IAS error threshold"  type="float" units="speed" display="%5.2f"/>
+				<Element name="Fast IAS error threshold"  type="float" units="speed" display="%5.2f"/>
+			</Group>
+				
+			<Group name="Pitch control">
+				<Element name="Pitch rate lpf cutoff"      type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Pitch bandwidth"  	   type="float" units="[Hz]" display="%5.2f"/>
+				<Element name="Pitch max accel"		   type="float" units="[rad/s/s]" display="%5.2f"/>
+				<Element name="Pitch stiffness trust"      type="float" units="na" display="%5.2f"/>
+				<Element name="Pitch damping trust" 	   type="float" units="na" display="%5.2f"/>
+				<Element name="Pitch rate err to accel"    type="float" units="na" display="%7.4f"/>
+				<Element name="Pitch rate err int to accel" type="float" units="na" display="%7.4f"/>
+			</Group>	
+				
+			<Group name="RPM control">
+				<Element name="RPM err to RPM rate cmd"       type="float" units="na" display="%5.2f"/>
+				<Element name="RPM rate err to throttlle"     type="float" units="na" display="%7.6f"/>
+				<Element name="RPM rate err int to throttlle" type="float" units="na" display="%7.6f"/>
+			</Group>
+	
+			<Group name="Brakes control">
+				<Element name="reserved"/>
+				<Element name="Accel err int to brakes" type="float" units="na" display="%5.2f"/>
+			</Group>
+			
+		</Category>
+
+		<Category name="Landing Limits">
+
+			<Group name="Flags">
+				<Element name="Diff from Limits" type="bitfield" msbit="0" numbits="1"/>			
+			</Group>
+		
+			<Group name="Command">
+				<Element name="Bank max"           type="float" units="angle"      display="%6.2f"/>
+				<Element name="Roll rate max"      type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="Pitch min"          type="float" units="angle"      display="%6.2f"/>
+				<Element name="Pitch max"          type="float" units="angle"      display="%6.2f"/>
+				<Element name="Pitch rate max"     type="float" units="angle_rate" display="%6.2f"/>
+				<Element name="IAS max"            type="float" units="speed"      display="%6.2f"/>
+				<Element name="Descent max fraction" type="float"                  display="%6.2f"/>
+				<Element name="Climb max fraction" type="float"                    display="%6.2f"/>
+				<Element name="Load factor min"    type="float" units="[g]"        display="%6.2f"/>
+				<Element name="Load factor max"    type="float" units="[g]"        display="%6.2f"/>
+				<Element name="RPM min"            type="float" units="[RPM]"      display="%6.1f"/>
+				<Element name="RPM max"            type="float" units="[RPM]"      display="%6.1f"/>
+				<Element name="RPM rate filter"    type="float" units="[RPM/s]"    display="%8.0f"/>
+			</Group>
+			
+			<Group name="Actuator">
+				<Element name="Aileron max"   type="float" units="angle"      display="%6.2f"/>
+				<Element name="Elevator min"  type="float" units="angle"      display="%6.2f"/>
+				<Element name="Elevator max"  type="float" units="angle"      display="%6.2f"/>
+				<Element name="Nose gear max" type="float" units="angle"      display="%6.2f"/>
+				<Element name="Rudder max"    type="float" units="angle"      display="%6.2f"/>
+				<Element name="Throttle min"  type="float"                    display="%6.2f"/>
+				<Element name="Throttle max"  type="float"                    display="%6.2f"/>
+				<Element name="Throttle rate" type="float" units="[/s]"       display="%6.2f"/>
+				<Element name="Flap min"      type="float" units="angle"      display="%6.2f"/>
+				<Element name="Flap max"      type="float" units="angle"      display="%6.2f"/>
+				<Element name="Flap rate"     type="float" units="angle_rate" display="%6.2f"/>
+			</Group>
+		
+		</Category>
+
+	</Categories>
+
+</UniversalController>
